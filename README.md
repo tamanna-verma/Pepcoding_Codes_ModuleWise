@@ -1,2 +1,2 @@
-# Pepcoding_Codes
+# JavaDailyCodes
 Daily Coding Questions are uploaded here
