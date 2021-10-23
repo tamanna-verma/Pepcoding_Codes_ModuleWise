@@ -18,9 +18,9 @@ public class Main {
 
     public static int lastIndex(int[] arr, int idx, int x)
     {
-       if(idx==0)
+       if(idx<0)
        {
-           return arr[0];
+           return -1;
        }
        if(arr[idx]==x)
        {
