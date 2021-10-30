@@ -49,10 +49,13 @@ public class Main {
       
       reverse(OneD,0,OneD.length-r-1);//starting vala array ka part reverse krne k liye ye kro
       
-      reverse(OneD,OneD.length-r-1,OneD.length-1);//second vala array ka part reverse krne k liye ye kro
+      reverse(OneD,OneD.length-r,OneD.length-1);//second vala array ka part reverse krne k liye ye kro
       
       reverse(OneD,0,OneD.length-1);//pura array ko reverse krne k liye ye kro
-   
+  //    for(int i=0;i<OneD.length;i++)
+//{
+ //  System.out.println(OneD[i]);
+//}
    return OneD; }
 
 public static void reverse(int []oned,int li,int ri)
@@ -75,14 +78,14 @@ public static void FillShellFrom1D(int Array[][],int oned[],int s)
      int maxc=Array[0].length-s;
 
      int idx=0;
-     for(int i=minr;i<maxr;i++)
+     for(int i=minr;i<=maxr;i++)
      {
         Array[i][minc]=oned[idx];
         idx++;
      }
      minc++;
      // to traverse on the bottom wall
-     for(int i=minc;i<maxc;i++)
+     for(int i=minc;i<=maxc;i++)
      {
         Array[maxr][i]=oned[idx];
         idx++;
