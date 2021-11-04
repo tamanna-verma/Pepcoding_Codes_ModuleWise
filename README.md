@@ -1,2 +1,2 @@
 # Pepcoding_Codes
-Daily Coding Questions are uploaded here
+Pepcoding Module Wise Coding Questions are uploaded here
