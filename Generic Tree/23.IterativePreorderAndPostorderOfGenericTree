@@ -1,0 +1,123 @@
+import java.io.*;
+import java.util.*;
+
+public class IterativePreAndPostOrder
+{
+  private static class Node                                   //class hai node
+  {
+    int data;
+    ArrayList<Node> children = new ArrayList<>();
+  }
+
+  public static Node construct(int[] arr) 
+   {                   //ye construct function hai kisi array se tree construct krne k liye 
+    Node root = null;
+
+    Stack<Node> st = new Stack<>();
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] == -1) {
+        st.pop();
+      } else {
+        Node t = new Node();
+        t.data = arr[i];
+
+        if (st.size() > 0) {
+          st.peek().children.add(t);
+        } else {
+          root = t;
+        }
+
+        st.push(t);
+      }
+    }
+
+    return root;
+  }
+
+  public static void preorder(Node node)
+  {
+      System.out.print(node.data+" ");
+      for(Node childNode:node.children)
+      {
+          preorder(childNode);
+      }
+  }
+
+  public static void postorder(Node node)
+  {
+    for(Node childNode:node.children)
+    {
+        postorder(childNode);
+    }
+        System.out.print(node.data+" ");
+  }
+ 
+  public static class Pair
+  {
+      Node node;
+      int state;
+
+      Pair(Node node, int state)//ye pair class ka constructor hai ,jb b koi pair ka object bnta hai to it is necessary to give the node and state
+      {
+      this.node=node;
+      this.state=state;
+      }
+  }
+  public static void IterativePreOrderAndPostOrder(Node node)
+  {
+      Stack<Pair> stack=new Stack<Pair>();
+      stack.push(new Pair(node,-1));
+      //to sbse phle humne ek stack bnayi ,us stack k andar hum pairs store krayege 
+      //to pairs k andar node ka data hoga aur us node ki state hogi 
+      //to us pair ki state k according decide hoga ki vo node preorder me print krna hai ya postorder me 
+      //ye iterative PreOrderand PostOrder hai to yha hum recursion to us enhi krege 
+      String Pre="";
+      String Post="";
+      while(stack.size()>0)
+      {
+          Pair top=stack.peek();
+          
+         //ab hume 3 chize dekhni hoti hai ,ya to state hai -1 , ya state hai between 0 to children.size-1 ,ya fir state hoga no.of children k equal 
+         //if the state of top is  -1 , to pre string  me add krdo  node k data ko aur state+1 krdo 
+         //if the state of top is top.children.size(),to top ko post string me add krdo aur stack se pop krdo 
+         //if the state is between 0 to top.node.children.size -1 ,to fir hum us state vale child ko stack me push krege aur top k state me +1 krdege 
+
+          if(top.state==-1)//agr state -1 hai to 
+          {
+             Pre+=top.node.data+" ";
+             top.state++;
+
+          }
+          else if(top.state==top.node.children.size())//agar state top k children arraylist k size jitni hai to 
+          {
+            Post+=top.node.data+" ";
+            stack.pop();
+          }
+          else //ya fir agar state hai between 0 to top node k childrenarraylist k size -1 tk khii hai to us state vale child ko add krdo  top.state++ krdo
+          {
+             Pair childPair=new Pair(top.node.children.get(top.state),-1);
+             stack.push(childPair);
+             top.state++;
+          }
+      }
+      System.out.println(Pre);
+      System.out.println(Post);
+  }
+  public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int n = Integer.parseInt(br.readLine());
+    int[] arr = new int[n];
+    String[] values = br.readLine().split(" ");
+    for (int i = 0; i < n; i++) {
+      arr[i] = Integer.parseInt(values[i]);
+    }
+
+    Node root = construct(arr);
+    preorder(root);
+    System.out.println();
+    postorder(root);
+    System.out.println();
+    IterativePreOrderAndPostOrder(root);
+  }
+
+}
