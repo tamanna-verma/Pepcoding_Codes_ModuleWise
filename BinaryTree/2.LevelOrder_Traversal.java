@@ -98,7 +98,7 @@ public class Main {
       for(int i=0;i<count;i++)
       {
             Node temp=pq.remove();//remove
-            System.out.print(temp.data+"");//print
+            System.out.print(temp.data+" ");//print
             if(temp.left!=null)
             {
                 pq.add(temp.left);
