@@ -15,5 +15,6 @@ LinkedList</br>
 Generic Trees</br>
 BinaryTrees</br>
 BinarySearchTrees</br>
-HashMapandHaps</br>
+HashMap and Heaps</br>
+Graphs</br>
 </br>
