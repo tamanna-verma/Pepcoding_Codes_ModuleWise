@@ -1,6 +1,6 @@
 # Pepcoding_Codes
 Pepcoding Module Wise Coding Questions are uploaded here <br/>
-The modules that are covered here are ->
+The modules that are covered here are -> <br/>
 Patterns  <br/>
 2-D Arrays  <br/>
 Strings,StringBuilder,ArrayList  <br/>
