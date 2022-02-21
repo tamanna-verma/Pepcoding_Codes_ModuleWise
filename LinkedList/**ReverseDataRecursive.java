@@ -150,7 +150,7 @@ public class ReverseDataRecursive {
           temp = temp.next;
         }
 
-        temp.next = temp.next.next;
+        temp.next = temp.next.next; 
         size--;
       }
     }
